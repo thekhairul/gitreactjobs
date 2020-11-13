@@ -1,23 +1,24 @@
 import { useState } from "react";
 
-function Switch({ bgColor, switchColor }) {
+function Switch({ bgColor, switchColor, callback }) {
   const [isSwitchOn, setSwitch] = useState(false);
 
-  const toggleSwitch = () => {
+  const handleSwitch = () => {
     setSwitch(!isSwitchOn);
+    callback && callback();
   };
 
   return (
     <div
-      className={`h-8 w-16 p-1 mx-2 rounded-3xl cursor-pointer ${
+      className={`h-6 w-12 p-1 mx-2 rounded-3xl cursor-pointer ${
         bgColor || ""
       }`}
-      onClick={toggleSwitch}
+      onClick={handleSwitch}
     >
       <div
-        className={`duration-200 ease-in-out h-6 origin-center rounded-full transform transition-transform ${
-          isSwitchOn ? "translate-x-8" : ""
-        } w-6 ${switchColor || ""}`}
+        className={`duration-200 ease-in-out h-4 w-4 origin-center rounded-full transform transition-transform ${
+          isSwitchOn ? "translate-x-6" : ""
+        } ${switchColor || ""}`}
       ></div>
     </div>
   );
