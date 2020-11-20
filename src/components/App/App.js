@@ -4,7 +4,7 @@ import Search from "../Search/Search";
 
 function App() {
   return (
-    <div className="App">
+    <div className={`App ${localStorage.getItem('isThemeDark') ? 'dark' : ''}`}>
       <div className="container">
         <Header logo="devjobs"></Header>
         <Search />
