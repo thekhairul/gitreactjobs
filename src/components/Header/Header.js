@@ -8,6 +8,7 @@ function Header({ logo }) {
       <div className="flex items-center">
         <FontAwesomeIcon icon="sun" className="text-white" />
         <Switch
+          switchState={localStorage.getItem("isThemeDark")}
           bgColor="bg-white"
           switchColor="bg-blue-600"
           callback={() => {

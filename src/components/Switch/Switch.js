@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function Switch({ bgColor, switchColor, callback }) {
-  const [isSwitchOn, setSwitch] = useState(!!localStorage.getItem("isThemeDark"));
+function Switch({ switchState, bgColor, switchColor, callback }) {
+  const [isSwitchOn, setSwitch] = useState(!!switchState);
 
   const handleSwitch = () => {
     setSwitch(!isSwitchOn);
