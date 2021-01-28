@@ -1,16 +1,20 @@
 import Job from "./../Job/Job.js";
+import { useContext } from "react";
+import { JobContext } from "../../contexts/jobContext";
 
 function Jobs({ limit }) {
-  const jobItems = [...Array(parseInt(limit)).keys()].map((el, idx) => (
+  const { joblist } = useContext(JobContext);
+  const jobItems = joblist.map((el, idx) => (
     <Job
       key={idx}
-      since="5h ago"
-      type="Full time job"
+      since={el.created_at}
+      type={el.type}
       position="Software Engineer"
-      company="Gitlab"
-      address="Columbus, OH"
+      company={el.company}
+      address={el.location}
     ></Job>
   ));
+  console.log(joblist);
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {jobItems}

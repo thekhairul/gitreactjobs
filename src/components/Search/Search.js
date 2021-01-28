@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { JobContext } from "../../contexts/jobContext";
 
 function Search() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [fulltime, setFulltime] = useState(false);
+  const { updateJoblist } = useContext(JobContext);
 
   const toggleFulltime = (e) => {
     setFulltime(e.target.checked);
@@ -19,7 +21,7 @@ function Search() {
           .split(" ")
           .join("+")}&full_time=${fulltime}`
       )
-      .then((res) => console.log(res))
+      .then((res) => updateJoblist(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -69,6 +71,7 @@ function Search() {
           Search
         </button>
       </div>
+      <JobContext.Consumer>{(value) => console.log(value)}</JobContext.Consumer>
     </form>
   );
 }
