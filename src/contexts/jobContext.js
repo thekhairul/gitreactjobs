@@ -4,7 +4,7 @@ const JobContext = React.createContext();
 
 class JobContextProvider extends Component {
   state = {
-    joblist: {},
+    joblist: [],
   };
 
   updateJoblist = (jobs) => {

@@ -7,9 +7,10 @@ function Jobs({ limit }) {
   const jobItems = joblist.map((el, idx) => (
     <Job
       key={idx}
-      since={el.created_at}
+      logo={el.company_logo}
+      since={new Date(el.created_at).toLocaleString()}
       type={el.type}
-      position="Software Engineer"
+      position={el.title}
       company={el.company}
       address={el.location}
     ></Job>

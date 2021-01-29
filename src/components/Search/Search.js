@@ -2,12 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { JobContext } from "../../contexts/jobContext";
+import { PageloaderContext } from "../../contexts/pageloaderContext";
 
 function Search() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [fulltime, setFulltime] = useState(false);
   const { updateJoblist } = useContext(JobContext);
+  const { handlePageloader } = useContext(PageloaderContext);
 
   const toggleFulltime = (e) => {
     setFulltime(e.target.checked);
@@ -15,14 +17,21 @@ function Search() {
   const submitSearch = (e) => {
     e.preventDefault();
     const corsAnywhereProxy = "https://cors-anywhere.herokuapp.com/";
+    handlePageloader(true);
     axios
       .get(
         `${corsAnywhereProxy}https://jobs.github.com/positions.json?description=${description}&location=${location
           .split(" ")
           .join("+")}&full_time=${fulltime}`
       )
-      .then((res) => updateJoblist(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        updateJoblist(res.data);
+        handlePageloader(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        handlePageloader(false);
+      });
   };
 
   return (
