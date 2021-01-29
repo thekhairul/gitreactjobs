@@ -80,7 +80,6 @@ function Search() {
           Search
         </button>
       </div>
-      <JobContext.Consumer>{(value) => console.log(value)}</JobContext.Consumer>
     </form>
   );
 }
