@@ -1,10 +1,10 @@
-import "./App.css";
+import "../../App.css";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import Jobs from "../Jobs/Jobs";
 import Pageloader from "../Pageloader/Pageloader";
 import { JobContextProvider } from "../../contexts/jobContext";
-import { PageloaderContextProvider } from "../../contexts/pageloaderContext";
+import { GlobalContextProvider } from "../../contexts/globalContext";
 
 function App() {
   return (
@@ -12,14 +12,14 @@ function App() {
       <div
         className={`App ${localStorage.getItem("isThemeDark") ? "dark" : ""}`}
       >
-        <PageloaderContextProvider>
+        <GlobalContextProvider>
           <Pageloader />
-          <div className="container">
+          <div className="container mx-auto">
             <Header logo="devjobs"></Header>
             <Search />
             <Jobs limit="10"></Jobs>
           </div>
-        </PageloaderContextProvider>
+        </GlobalContextProvider>
       </div>
     </JobContextProvider>
   );

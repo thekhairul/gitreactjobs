@@ -2,14 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext } from "react";
 import axios from "axios";
 import { JobContext } from "../../contexts/jobContext";
-import { PageloaderContext } from "../../contexts/pageloaderContext";
+import { GlobalContext } from "../../contexts/globalContext";
 
 function Search() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [fulltime, setFulltime] = useState(false);
   const { updateJoblist } = useContext(JobContext);
-  const { handlePageloader } = useContext(PageloaderContext);
+  const { handlePageloader } = useContext(GlobalContext);
 
   const toggleFulltime = (e) => {
     setFulltime(e.target.checked);
