@@ -5,10 +5,22 @@ const GlobalContext = React.createContext();
 class GlobalContextProvider extends Component {
   state = {
     pageLoading: false,
+    isDark: !!localStorage.getItem("isThemeDark"),
   };
 
-  handleGlobal = (state) => {
+  handlePageloader = (state) => {
     this.setState({ pageLoading: state });
+  };
+
+  handleDarkMode = () => {
+    if (localStorage.getItem("isThemeDark")) {
+      localStorage.removeItem("isThemeDark");
+    } else {
+      localStorage.setItem("isThemeDark", "true");
+    }
+    this.setState((prevState) => {
+      return { isDark: !prevState.isDark };
+    });
   };
 
   render() {
@@ -16,7 +28,9 @@ class GlobalContextProvider extends Component {
       <GlobalContext.Provider
         value={{
           pageLoading: this.state.pageLoading,
-          handleGlobal: this.handleGlobal,
+          handlePageloader: this.handlePageloader,
+          isDark: this.state.isDark,
+          handleDarkMode: this.handleDarkMode,
         }}
       >
         {this.props.children}

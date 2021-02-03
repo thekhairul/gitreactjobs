@@ -27,7 +27,7 @@
   "scripts": {
     "build:tailwind": "postcss src/tailwind.css -o src/App.css",
     "watch:tailwind": "postcss -w src/tailwind.css -o src/App.css",
-    "start": "react-scripts start",
+    "start": "export PORT=9000 && react-scripts start",
     "dev": "yarn build:tailwind && yarn start",
     "prebuild": "yarn build:tailwind",
     "build": "react-scripts build",
