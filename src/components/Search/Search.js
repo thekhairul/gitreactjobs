@@ -16,7 +16,7 @@ function Search() {
   };
   const submitSearch = (e) => {
     e.preventDefault();
-    const corsAnywhereProxy = "https://cors-anywhere.herokuapp.com/";
+    const corsAnywhereProxy = "https://guarded-mesa-38650.herokuapp.com/";
     handlePageloader(true);
     axios
       .get(

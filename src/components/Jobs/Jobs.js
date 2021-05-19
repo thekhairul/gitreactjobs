@@ -23,7 +23,7 @@ function Jobs({ limit }) {
     handlePageloader(true);
     axios
       .get(
-        "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json"
+        "https://guarded-mesa-38650.herokuapp.com/https://jobs.github.com/positions.json"
       )
       .then((res) => {
         updateJoblist(res.data);
