@@ -8,10 +8,8 @@ function App() {
   return (
     <JobContextProvider>
       <GlobalContextProvider className="App">
-        <GlobalContextProvider>
-          <Pageloader />
-          <Container />
-        </GlobalContextProvider>
+        <Pageloader />
+        <Container />
       </GlobalContextProvider>
     </JobContextProvider>
   );
